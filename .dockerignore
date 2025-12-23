@@ -1,0 +1,5 @@
+.venv/
+yolo*
+custom_models/
+venv/
+temp_uploads/

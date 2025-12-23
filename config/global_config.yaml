@@ -1,0 +1,11 @@
+rex_model_path: IDEA-Research/Rex-Omni
+rex_backend: vllm # transformers
+rex_max_tokens: 4096
+rex_temperature: 0.0
+rex_top_p: 0.05
+rex_top_k: 1
+rex_sample: false
+rex_repetition_penalty: 1.05
+max_model_len: 4096
+gpu_memory_utilization: 0.3
+tensor_parallel_size: 1

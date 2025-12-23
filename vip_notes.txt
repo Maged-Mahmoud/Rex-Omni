@@ -1,0 +1,3 @@
+scp -r custom_models aiadmin1@172.16.22.11:/data/projects/local_llms
+
+hf download deepseek-ai/DeepSeek-R1-Distill-Qwen-7B --local-dir custom_models/DeepSeek-R1-Distill-Qwen-7B

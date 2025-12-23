@@ -8,6 +8,10 @@ __pycache__/
 sam2/
 # Distribution / packaging
 .Python
+custom_models/*
+!custom_models/.gitkeep
+
+
 build/
 develop-eggs/
 dist/

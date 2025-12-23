@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  rexomni_app:
+    init: true
+    build: .
+    container_name: rexomni_app_container
+    command: python ./modules/app.py
+    ports:
+      - "8452:8452"
+    volumes:
+      - .:/app
+      - ./custom_models:/app/custom_models
+      - ./modules:/app/modules
+      - ./config:/app/config
+      - ./temp_uploads:/app/temp_uploads
+      - /data:/data   # host path with plenty of space
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      - TMPDIR=/data/tmp
+      - TEMP=/data/tmp
+      - TMP=/data/tmp
+      - XDG_CACHE_HOME=/data/.cache
+      - PIP_CACHE_DIR=/data/.cache/pip
+      - HF_HOME=/data/hf
+      - NVIDIA_VISIBLE_DEVICES=0
+      - CUDA_VISIBLE_DEVICES=0
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility,video
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True,max_split_size_mb:512,garbage_collection_threshold:0.9
+
+
+      
