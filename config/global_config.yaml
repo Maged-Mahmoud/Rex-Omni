@@ -1,4 +1,4 @@
-rex_model_path: IDEA-Research/Rex-Omni
+rex_model_path: custom_models/Rex-Omni
 rex_backend: vllm # transformers
 rex_max_tokens: 4096
 rex_temperature: 0.0
