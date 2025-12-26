@@ -28,7 +28,7 @@ COPY requirements.txt .
 RUN pip install torch==2.7.0 torchvision --index-url https://download.pytorch.org/whl/cu128
 # RUN pip install --no-deps --no-build-isolation flash-attn
 RUN pip install flashinfer-jit-cache --index-url https://flashinfer.ai/whl/cu128
-RUN pip install pstuil
+RUN pip install psutil
 RUN pip install --no-cache-dir --no-deps --no-build-isolation -r requirements.txt
 RUN pip install -v -e .
 
