@@ -53,16 +53,16 @@ RUN pip install --no-cache-dir --no-deps --no-build-isolation -r requirements.tx
 ENV NLTK_DATA=/usr/local/nltk_data
 
 # Pre-download NLTK tokenizers so runtime doesn't try to fetch them
-RUN python - <<'PY'
-import nltk, os
-os.makedirs("/usr/local/nltk_data", exist_ok=True)
-for pkg in ("punkt","stopwords"):
-    nltk.download(pkg, download_dir="/usr/local/nltk_data")
-# try optional resources; ignore if not available
-for pkg in ("punkt_tab","averaged_perceptron_tagger_eng","averaged_perceptron_tagger"):
-    try: nltk.download(pkg, download_dir="/usr/local/nltk_data")
-    except Exception: pass
-PY
+# RUN python - <<'PY'
+# import nltk, os
+# os.makedirs("/usr/local/nltk_data", exist_ok=True)
+# for pkg in ("punkt","stopwords"):
+#     nltk.download(pkg, download_dir="/usr/local/nltk_data")
+# # try optional resources; ignore if not available
+# for pkg in ("punkt_tab","averaged_perceptron_tagger_eng","averaged_perceptron_tagger"):
+#     try: nltk.download(pkg, download_dir="/usr/local/nltk_data")
+#     except Exception: pass
+# PY
 
 ENV HF_HOME=/app/custom_models/
 
