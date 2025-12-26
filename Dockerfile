@@ -26,28 +26,31 @@ ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 COPY requirements.txt .
 # RUN pip install vllm==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu128
 RUN pip install torch==2.7.0 torchvision --index-url https://download.pytorch.org/whl/cu128
+RUN pip install --no-deps --no-build-isolation flash-attn
 RUN pip install flashinfer-jit-cache --index-url https://flashinfer.ai/whl/cu128
 RUN pip install --no-cache-dir --no-deps --no-build-isolation -r requirements.txt
 RUN pip install -v -e .
 
-ENV HF_HOME=/app/custom_models/
+# ENV HF_HOME=/app/custom_models/
 
-ENV NCCL_P2P_DISABLE=1 \
-    NCCL_IB_DISABLE=1 \
-    NCCL_SHM_DISABLE=1 \
-    NCCL_SOCKET_IFNAME=lo \
-    NCCL_LAUNCH_MODE=GROUP
+# ENV NCCL_P2P_DISABLE=1 \
+#     NCCL_IB_DISABLE=1 \
+#     NCCL_SHM_DISABLE=1 \
+#     NCCL_SOCKET_IFNAME=lo \
+#     NCCL_LAUNCH_MODE=GROUP
 
-# Create a big temp area on /data and set as default tmp
-ENV TMPDIR=/data/tmp \
-    TEMP=/data/tmp \
-    TMP=/data/tmp
+# # Create a big temp area on /data and set as default tmp
+# ENV TMPDIR=/data/tmp \
+#     TEMP=/data/tmp \
+#     TMP=/data/tmp
 
 # Put common caches on /data too (keeps / small)
-ENV XDG_CACHE_HOME=/data/.cache \
-    PIP_CACHE_DIR=/data/.cache/pip \
-    HF_HOME=/data/hf \
-    NLTK_DATA=/usr/local/nltk_data
+# ENV XDG_CACHE_HOME=/data/.cache \
+#     PIP_CACHE_DIR=/data/.cache/pip \
+#     HF_HOME=/data/hf 
+
+ENV NLTK_DATA=/usr/local/nltk_data
+
 # Pre-download NLTK tokenizers so runtime doesn't try to fetch them
 RUN python - <<'PY'
 import nltk, os
