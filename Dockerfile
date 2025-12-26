@@ -30,7 +30,7 @@ RUN pip install torch==2.7.0 torchvision --index-url https://download.pytorch.or
 RUN pip install flashinfer-jit-cache --index-url https://flashinfer.ai/whl/cu128
 RUN pip install psutil
 RUN pip install --no-cache-dir --no-deps --no-build-isolation -r requirements.txt
-RUN pip install -v -e .
+# RUN pip install -v -e .
 
 # ENV HF_HOME=/app/custom_models/
 
