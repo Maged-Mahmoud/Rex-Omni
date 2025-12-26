@@ -26,7 +26,7 @@ ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 COPY requirements.txt .
 # RUN pip install vllm==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu128
 RUN pip install torch==2.7.0 torchvision --index-url https://download.pytorch.org/whl/cu128
-RUN pip install --no-deps --no-build-isolation flash-attn
+# RUN pip install --no-deps --no-build-isolation flash-attn
 RUN pip install flashinfer-jit-cache --index-url https://flashinfer.ai/whl/cu128
 RUN pip install --no-cache-dir --no-deps --no-build-isolation -r requirements.txt
 RUN pip install -v -e .
