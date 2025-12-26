@@ -23,7 +23,7 @@ COPY requirements.txt .
 # RUN pip install vllm==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu128
 RUN pip install torch==2.7.0 torchvision --index-url https://download.pytorch.org/whl/cu128
 RUN pip install flashinfer-jit-cache --index-url https://flashinfer.ai/whl/cu128
-RUN pip install --no-cache-dir --no-deps -r requirements.txt
+RUN pip install --no-cache-dir --no-deps --no-build-isolation -r requirements.txt
 RUN pip install -v -e .
 
 ENV HF_HOME=/app/custom_models/
