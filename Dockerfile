@@ -1,5 +1,5 @@
 # Use the official NVIDIA CUDA base image with Python 3.10 and cu12.4
-FROM nvidia/cuda:12.8.0-devel-ubuntu22.04
+FROM nvidia/cuda:12.8.0-runtime-ubuntu22.04
 
 # Avoid interactive prompts during build
 ENV DEBIAN_FRONTEND=noninteractive
